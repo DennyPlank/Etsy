@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
     return (
       <div> 
         <Link to="/">Home</Link>
-        <Link to="/private">Private</Link>
+        <Link to="/products">Products</Link>
+        <Link to="/catagories">Catagories</Link>
       </div>
     )
   }

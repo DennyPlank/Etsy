@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar';
+import Catagories from './Pages/Catagories';
 import Home from './Pages/Home';
-import Private from './Pages/Private';
+import Products from './Pages/Products';
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
         <Navbar />
           <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/private" element={<Private />}/>
-
+          <Route path="/products" element={<Products />}/>
+          <Route path="/catagories" element={<Catagories />}/>
           </Routes>
     </div>
   );
