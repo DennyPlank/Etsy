@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Database Cleaner ---
-# require 'database_cleaner/active_record'
-# DatabaseCleaner.strategy = :truncation
+require 'database_cleaner/active_record'
+DatabaseCleaner.strategy = :truncation
 
 require 'faker'
 catagories = [
@@ -36,8 +36,9 @@ catagories = [
   10.times do
     price = rand(50..1000)
     Product.create(
+      name: Faker::Commerce.product_name,
       price: price,
-      description: Faker::Quote,
+      description: Faker::Quote.famous_last_words,
       category: catagories.sample,
       seller_id: a.id
   )
