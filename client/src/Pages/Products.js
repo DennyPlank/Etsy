@@ -8,9 +8,9 @@ const Products = () => {
   const [products, setProducts] = useState([])
   
   const getProducts = async () => {
-    let res = await axios.get("/api/products")
+    let res = await axios.get("/api/categories")
     setProducts(res.data)
-  }
+  };
   const renderProducts = () => {
     let count = 0
    return products.map((product)=>{
@@ -18,11 +18,11 @@ const Products = () => {
       return (
         <div>
           <hr />
-          {`${count}) ${product.name}: $${product.price}`}
+          {`${count}) ${product.product_name}: $${product.price} seller: ${product.seller_name}`}
         </div>
       )
-    })
-  }
+    });
+  };
   
   return (
    <div>{renderProducts()}</div>
