@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react' 
 import axios from 'axios'
-import { Icon, Label, Menu, Table } from 'semantic-ui-react'
+import { Icon, Label, Menu, Table, Dropdown } from 'semantic-ui-react'
 
 
 const Products = () => {
@@ -28,9 +28,40 @@ const Products = () => {
       )
     });
   };
+
+  // This normalizes the array for the dropdown menu;
+  const friendOptions = () => {
+      let people = []
+         products.map((p)=>{
+         people.push(p.seller_name)
+    }) 
+      let uniquePeeps = [...new Set(people)]
+      let normal =[]
+      // console.log(uniquePeeps)
+      uniquePeeps.map((p)=>{
+        normal.push(
+          {
+            key: p,
+            text: p,
+            value: p
+          })
+        })
+        return normal
+  };
+  
+  const dropdown = () => (
+    <Dropdown
+      placeholder='Select Seller'
+      fluid
+      selection
+      options={friendOptions()}
+    />
+  )
   
   return (
    <div>
+     <h1> View All products below or Search for a seller in the menu</h1>
+     {dropdown()}
      <Table celled>
     <Table.Header>
       <Table.Row>
