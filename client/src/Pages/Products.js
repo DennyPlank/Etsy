@@ -53,12 +53,15 @@ const Products = () => {
   const handleSellerSelction= (e, data) => {
     e.preventDefault();
     setSeller(data.value)
+    setToggle(null)
     }
 
   // This normalizes the array for the dropdown menu;
   const friendOptions = () => {
       let people = []
+      console.log(people)
          products.map((p)=>{
+           console.log(p)
          people.push(p.seller_name)
     }) 
       let uniquePeeps = [...new Set(people)]
@@ -87,7 +90,7 @@ const Products = () => {
 
   const toggler = () => {
     setToggle(!toggle);
-    setSeller('none')
+    setSeller('None')
   }
 
   return (
