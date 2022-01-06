@@ -5,6 +5,9 @@ import { Icon, Label, Menu, Table, Dropdown } from 'semantic-ui-react'
 
 const Products = () => {
   const [seller, setSeller] = useState("none selected");
+  const [toggle, setToggle] = useState(null)
+
+  
   useEffect(()=>{
     getProducts();
   }, [])
@@ -15,7 +18,8 @@ const Products = () => {
     let res = await axios.get("/api/products")
     setProducts(res.data)
   };
-  const renderProducts = () => {
+
+  const renderAllProducts = () => {
     let count = 0
    return products.map((product)=>{
       count +=  1
@@ -29,11 +33,26 @@ const Products = () => {
       )
     });
   };
+  const renderSellerProducts = () => {
+    console.log(seller)
+    let sellersProds = products.filter(p => p.seller_name == seller)
+    let count = 0
+    return sellersProds.map((product)=>{
+      count += 1
+      return (
+        <Table.Row>
+          <Table.Cell>{product.product_name}</Table.Cell>
+          <Table.Cell>{product.description}</Table.Cell>
+          <Table.Cell>{`$${product.price}`}</Table.Cell>
+          <Table.Cell>{product.seller_name}</Table.Cell>
+        </Table.Row>
+      )
+    });
+  };
 
-  const selectSeller = (e, data) => {
+  const handleSellerSelction= (e, data) => {
     e.preventDefault();
-    // console.log(data.value)
-      setSeller(data.value)
+    setSeller(data.value)
     }
 
   // This normalizes the array for the dropdown menu;
@@ -62,16 +81,23 @@ const Products = () => {
       fluid
       selection
       options={friendOptions()}
-      onChange={selectSeller}
+      onChange={handleSellerSelction}
     />
-  )
+  );
+
+  const toggler = () => {
+    setToggle(!toggle);
+    setSeller('none')
+  }
 
   return (
    <div>
      <h2> {`Current Seller: ${seller} `}</h2>
-      <h1>Select a Seller Below </h1>
+      <h1>Select a Seller Below or View All Products</h1>
       {dropdown()}
-      <h2> View All: </h2>
+      <hr />
+
+      <button onClick={toggler}>View All Available Products</button>
       <Table celled>
       <Table.Header>
         <Table.Row>
@@ -83,7 +109,8 @@ const Products = () => {
       </Table.Header>
 
       <Table.Body>
-    {renderProducts()}
+    {seller ? renderSellerProducts() : ''}
+    {toggle ? renderAllProducts() : ''}
       </Table.Body>
 
         {/* <Table.Footer>
