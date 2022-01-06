@@ -11,10 +11,7 @@ class Product < ApplicationRecord
   end
 
 
-  # SELECT products.name AS product_name, price, description, category, sellers.name AS seller_name FROM products
-  # JOIN sellers
-  # ON products.seller_id = sellers.id
-  # ORDER BY category, seller_name;
+  # Groups data by category
   def self.by_category
   select('products.name AS product_name, price, description, category, sellers.name AS seller_name')
   .joins('JOIN sellers ON products.seller_id = sellers.id')
