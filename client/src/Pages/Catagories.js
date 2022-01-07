@@ -65,14 +65,16 @@ const Categories = () => {
 
       let uniqueCats = [...new Set(categoryArray)]
       let normal =[]
+      let count = 0
       uniqueCats.map((c)=>{
+        count += 1
         normal.push(
           {
             key: c,
-            text: c,
+            text: `${count}) ${c}`,
             value: c
-          })
-        })
+          });
+        });
         return normal
   };
   
@@ -98,7 +100,7 @@ const Categories = () => {
       {dropdown()}
       <hr />
 
-      <button onClick={toggler}>View All Available Products</button>
+      <button onClick={toggler}>{toggle ? 'Back' : 'View All'}</button>
       <Table celled>
       <Table.Header>
         <Table.Row>

@@ -15,8 +15,7 @@ code {
   border: black 1px solid;
   background-color: rgb(230, 215, 215);
 }
-
-div > a {
+#navbar > a {
   margin-right: 5%;
-  color: blueviolet;
 }
+

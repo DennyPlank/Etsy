@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
-// Still broken after React 6.0 update, go to index.html
+// Still broken after React 17.0 update, go to index.html
 // import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(

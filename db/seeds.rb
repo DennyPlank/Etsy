@@ -17,13 +17,13 @@ catagories = [
   'food',
 ]
 
-10.times do
+100.times do
   a = Seller.create(
     name: Faker::Name.name,
     email: Faker::Internet.email
   )
 
-  2.times do
+  5.times do
     m_price = rand(50..1000);
     Buyer.create(
       name: Faker::Name.name,
@@ -33,7 +33,7 @@ catagories = [
     )
   end
   
-  10.times do
+  50.times do
     price = rand(50..1000)
     Product.create(
       name: Faker::Commerce.product_name,
@@ -45,4 +45,4 @@ catagories = [
   end
 end
 
-puts '10 sellers, 20 buyers, 100 products seed'
+puts '100 sellers, 50 buyers, 5000 products seed'
