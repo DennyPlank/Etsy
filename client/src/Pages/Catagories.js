@@ -40,12 +40,12 @@ const Categories = () => {
     return sellersProds.map((product)=>{
       count += 1
       return (
-        <Table.Row>
-          <Table.Cell>{product.product_name}</Table.Cell>
-          <Table.Cell>{product.description}</Table.Cell>
-          <Table.Cell>{`$${product.price}`}</Table.Cell>
-          <Table.Cell>{product.category}</Table.Cell>
-        </Table.Row>
+          <Table.Row >
+            <Table.Cell>{product.product_name}</Table.Cell>
+            <Table.Cell>{product.description}</Table.Cell>
+            <Table.Cell>{`$${product.price}`}</Table.Cell>
+            <Table.Cell>{product.category}</Table.Cell>
+          </Table.Row>
       )
     });
   };
@@ -59,14 +59,12 @@ const Categories = () => {
   // This normalizes the array for the dropdown menu;
   const categoryOptions = () => {
       let categoryArray = []
-      console.log(categoryArray)
          products.map((product)=>{
           categoryArray.push(product.category)
     }) 
 
       let uniqueCats = [...new Set(categoryArray)]
       let normal =[]
-      // console.log(uniqueCats)
       uniqueCats.map((c)=>{
         normal.push(
           {

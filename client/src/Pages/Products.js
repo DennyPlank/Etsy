@@ -34,7 +34,6 @@ const Products = () => {
     });
   };
   const renderSellerProducts = () => {
-    console.log(seller)
     let sellersProds = products.filter(p => p.seller_name == seller)
     let count = 0
     return sellersProds.map((product)=>{
@@ -59,9 +58,7 @@ const Products = () => {
   // This normalizes the array for the dropdown menu;
   const friendOptions = () => {
       let people = []
-      console.log(people)
          products.map((p)=>{
-           console.log(p)
          people.push(p.seller_name)
     }) 
       let uniquePeeps = [...new Set(people)]
