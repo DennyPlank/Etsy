@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     resources :products
     resources :sellers
     get '/categories', to: 'products#categories'
+    get '/productSearch', to: 'buyers#index'
   end
 end
