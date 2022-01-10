@@ -5,6 +5,7 @@ import { Dropdown, Menu, Table } from 'semantic-ui-react'
 const ProductSearch = () => {
   const [products, setProducts] =useState([])
   const [dd1, setDd1] = useState([])
+  const [loading, setLoading] = useState(true)
 
 useEffect(()=>{
   getProducts();
@@ -27,7 +28,7 @@ const populateDropdown1 = () => {
   products.map((p)=>{
     newArr.push(p.category)
   })
- let uniqueCats = [...new Set(newArr)]
+  let uniqueCats = [...new Set(newArr)]
   let normalized = []
   let aKey = 0
   uniqueCats.map((c)=>{
@@ -35,6 +36,7 @@ const populateDropdown1 = () => {
     normalized.push({key: aKey, text: c, value: aKey})
   })
   setDd1(normalized)
+  {uniqueCats.length > 0 && setLoading(false)}
 }
 
 const Catagories1 = dd1
@@ -64,6 +66,7 @@ const dropdown2 = () => (
 
   return (
     <div> 
+      <h1>{loading ? "Loading" : "Done Loading"}</h1>
       <p> 2 drop downs, and custom sql back </p>
       {dropdown1()}
       {dropdown2()}
